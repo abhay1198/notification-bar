@@ -1,0 +1,59 @@
+<?php
+/**
+ * Abhay
+ * 
+ * PHP version 7
+ * 
+ * @category  Abhay
+ * @package   Abhay_NotificationBar
+ * @author    Abhay Agrawal <abhay@gmail.com>
+ * @copyright 2022 Copyright © Abhay
+ * @license   See COPYING.txt for license details.
+ * @link      https://github.com/abhay1198/notification-bar
+ */
+$enable = $block->getConfiguration('enable');
+$notificationMessage = $block->getConfiguration('notification_msg');
+$backgroundColor = $block->getConfiguration('background_color');
+$notificationPosition = $block->getConfiguration('notification_position');
+
+if ($enable == 1) { ?>
+    <div id="notification-msg"><?= strip_tags($notificationMessage); ?></div>
+<?php } 
+if ($notificationPosition == 'header') { ?>
+    <style>
+        .page-wrapper{
+            padding-top: 45px;
+        }
+        div#notification-msg {
+            position: absolute;
+            top: 0;
+            text-align: center;
+            z-index: 999;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            left: 0px;
+            font-size: large;
+            background: <?= $backgroundColor; ?>;
+        }
+    </style>
+<?php } elseif($notificationPosition == 'footer') { ?>
+    <style>
+        .page-wrapper{
+            padding-bottom: 45px;
+        }
+        div#notification-msg {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            z-index: 999;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            left: 0px;
+            font-size: large;
+            background: <?= $backgroundColor; ?>;
+        }
+    </style>
+<?php } ?>
+
